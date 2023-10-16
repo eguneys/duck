@@ -1,0 +1,26 @@
+feednews {
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 1em;
+  display: flex;
+  gap: 1em;
+  justify-content: space-around;
+}
+
+feed, news {
+  flex: 1;
+  padding: 0.8em;
+  border: solid black 1px;
+}
+
+feed p {
+
+  padding-bottom: 0.8em;
+}
+
+news ul {
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  gap: 0.8em;
+}

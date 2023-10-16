@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>duckchess.org - Free Online Duck Chess Site</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/compiled/site.css"/>
+
+    {% block morecss %} {% endblock morecss %}
+  </head>
+  <body>
+
+    <navbar> 
+      <logo>duckchess.org</logo>
+      <links>
+      <ul>
+      <li>Play Online</li>
+      <li>Watch</li>
+      <li>Tournaments</li>
+      <li>Play Puzzles</li>
+      <li>Donate</li>
+      <li>Engine Analysis</li>
+      </ul>
+      </links>
+
+      <dash>lichess.org/@/heroku</dash>
+    </navbar>
+
+
+
+    {% block content %} {% endblock content %}
+
+
+
+  </body>
+</html>

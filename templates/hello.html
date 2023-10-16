@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block morecss %} 
+<link rel="stylesheet" href="assets/compiled/hello.css">
+{% endblock morecss %}
+{% block content %}
+<section>
+  <feednews>
+  <feed>
+<p>Hello heroku,
+You've analysed 2 games today, 32 this week.</p>
+<p>
+duckchess.org has analysed 200 games today, 1000 this week.  </p>
+<p>Currently 2 people are on the site</p>
+  </feed>
+
+  <news>
+    <ul>
+    <li>duckchess.org has launched.  <date>28 February</date></li>
+    <li>March Site Update. <date>28 March</date></li>
+    </ul>
+  </news>
+  </feednews>
+</section>
+
+
+<section>
+  <footer>
+  <button>Donate</button>
+  <button>About</button>
+  </footer>
+  <main>
+
+  </main>
+  <puzzle>
+    Duck Puzzle
+    White to move
+  </puzzle>
+</section>
+
+{% endblock content %}
