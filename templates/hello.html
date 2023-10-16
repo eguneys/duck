@@ -24,17 +24,66 @@ duckchess.org has analysed 200 games today, 1000 this week.  </p>
 
 
 <section>
-  <footer>
-  <button>Donate</button>
-  <button>About</button>
-  </footer>
-  <main>
+  <div class="seekactionfooter">
+    <footer>
+    <a>Donate</a>
+    <a>About</a>
+    </footer>
+    <main>
 
-  </main>
-  <puzzle>
-    Duck Puzzle
-    White to move
-  </puzzle>
+      <div class="action">
+        <button>Play Engine</button>
+        <button>Play Online</button>
+        <button>Play Friend</button>
+      </div>
+      <div class="hookoptions">
+        <div class="hooks">
+          <ul>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> heroku vs 7+5 Duck Chess </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+            <li> Anonymous vs 3+2 Duck Chess Fischer Random </li>
+          </ul>
+        </div>
+        <div class="options">
+          <select>
+            <option>3+2</option>
+            <option>5+4</option>
+            <option>10</option>
+            <option>7+5</option>
+          </select>
+
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+            <span class="left">Regular</span>
+            <span class="right">Fischer Random</span>
+          </label>
+
+          <button>Seek</button>
+        </div>
+      </div>
+
+    </main>
+    <div class="puzzle-wrap">
+    <puzzle>
+      Duck Puzzle
+      White to move
+    </puzzle>
+    </div>
+  </div>
 </section>
 
 {% endblock content %}

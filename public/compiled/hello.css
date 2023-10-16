@@ -24,3 +24,143 @@ news ul {
   flex-flow: column;
   gap: 0.8em;
 }
+
+
+
+.seekactionfooter {
+  display: flex;
+  justify-content: center;
+}
+
+
+footer {
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+  justify-content: flex-end;
+}
+
+footer a {
+  background: lightyellow;
+  border: 1px solid black;
+  user-select: none;
+  cursor: pointer;
+  padding: 0.2em;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.puzzle-wrap {
+  border: 1px solid black;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+main .action {
+  display: flex;
+  flex-flow: column;
+}
+
+main .hookoptions {
+  border: 1px solid black;
+  padding: 0.2em;
+}
+
+main .hooks {
+  display: flex;
+  border: 1px solid black;
+  max-height: 240px;
+}
+
+main .hooks ul {
+  list-style: none;
+  padding: 0.1em;
+  overflow-y: scroll;
+}
+
+main .hooks ul li {
+  margin: 0.1em;
+  box-shadow: inset 0px 0px 2px 0px;
+}
+
+main .hooks ul li:hover {
+  user-select: none;
+  cursor: pointer;
+  color:black;
+  background: lightyellow;
+  box-shadow: 0px 0px 1px 1px;
+}
+
+main .action button {
+  font-size: 1.4em;
+  padding: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+main .options {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+main .options button {
+  padding: 1em;
+}
+
+label.switch {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: lightgreen;
+  width: 160px;
+  height: 50px;
+}
+
+.switch input {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+
+.switch .slider {
+  z-index: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.2s;
+}
+
+
+.switch .left, .switch .right {
+  font-size: 0.7em;
+  width: 50px;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10px;
+}
+
+.switch .left {
+  left: 5px;
+}
+
+.switch .right {
+  right: 5px
+}
+
+.switch input:checked + .slider {
+  left: calc(100%);
+  transform: translateX(-100%);
+}
