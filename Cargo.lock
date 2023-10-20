@@ -520,6 +520,7 @@ dependencies = [
  "actix-web",
  "actix-web-actors",
  "env_logger",
+ "html",
  "lazy_static",
  "serde",
 ]
@@ -668,6 +669,21 @@ name = "hermit-abi"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d77f7ec81a6d05a3abb01ab6eb7590f6083d08449fe5a1c8b1e620283546ccb7"
+
+[[package]]
+name = "html"
+version = "0.6.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "509ea0d09195b6c4c66fd25f79098bbcba02da38a22c5047bcbc590f5bb1ea2a"
+dependencies = [
+ "html-sys",
+]
+
+[[package]]
+name = "html-sys"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8a8f4837d782f807628ab8fa9b375212c09ef863b7a179b292ff5b66d7fbf056"
 
 [[package]]
 name = "http"

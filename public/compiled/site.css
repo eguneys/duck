@@ -39,7 +39,7 @@ a:hover {
 }
 
 
-navbar {
+nav {
   padding: 0.4em;
   display: flex;
   justify-content: center;
@@ -48,14 +48,14 @@ navbar {
 }
 
 
-navbar links {
+nav .links {
   display: flex;
   justify-content: center;
   flex: 1;
   align-items: stretch;
 }
 
-navbar links ul {
+nav .links ul {
   flex: 1;
   max-width: 600px;
   list-style: none;
@@ -65,7 +65,7 @@ navbar links ul {
   align-items: stretch;
 }
 
-navbar links ul li {
+nav .links ul li {
   user-select: none;
   cursor: pointer;
   transition: color 0.2s, background cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -73,12 +73,12 @@ navbar links ul li {
   padding: 0.2em;
 }
 
-links ul li:hover {
+nav .links ul li:hover {
   background: black;
   color: #f6f66d;
 }
 
-navbar dash {
+nav .dasher {
   flex: none;
 }
 

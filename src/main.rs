@@ -1,30 +1,14 @@
-use std::collections::HashMap;
+#![allow(unused)]
+#![recursion_limit = "512"]
+mod views;
 
-use actix::{ StreamHandler, Actor };
+use actix::{ StreamHandler, Actor, fut::{Ready, ok} };
 use actix_files::Files;
-use actix_web::{Responder, get, HttpResponse, web, App, HttpServer, middleware, HttpRequest, Error};
+use actix_web::{Responder, get, HttpResponse, web::{self, Data}, App, HttpServer, middleware, HttpRequest, Error, FromRequest};
 
 use actix_web_actors::ws;
-use lazy_static::lazy_static;
-use tera::{Tera, Context, to_value};
 use serde::Serialize;
-
-lazy_static! {
-
-    pub static ref TEMPLATES: Tera = {
-
-        let mut tera = match Tera::new("templates/*") {
-            Ok(t) => t,
-            Err(e) => {
-                println!("Parsing error: {}", e);
-                ::std::process::exit(1);
-            }
-        };
-        tera.autoescape_on(vec![".html"]);
-        tera
-    };
-
-}
+use views::{environment::Templates, all::Views};
 
 #[derive(Serialize)]
 struct AnalysisJsonData {
@@ -43,17 +27,27 @@ impl AnalysisViewData {
     }
 }
 
+
+impl FromRequest for Views {
+    type Error = Error;
+
+    type Future = Ready<Result<Self, Error>>;
+
+    fn from_request(req: &HttpRequest, payload: &mut actix_web::dev::Payload) -> Self::Future {
+        ok(Views::new(req.app_data::<Data<LocalAppState>>().unwrap().clone()))
+    }
+}
+
+
 #[get("/analysis")]
-async fn analysis() -> impl Responder {
-    let mut context = Context::new();
-    context.insert("json_data", &AnalysisViewData::new());
-    HttpResponse::Ok().body(TEMPLATES.render("analysis.html", &context).unwrap())
+async fn analysis(views: Views) -> impl Responder {
+
+    HttpResponse::Ok().body(views.analysis.show().to_string())
 }
 
 #[get("/")]
 async fn hello() -> impl Responder {
-    let context = Context::new();
-    HttpResponse::Ok().body(TEMPLATES.render("hello.html", &context).unwrap())
+    HttpResponse::Ok().body("hello")
 }
 
 
@@ -80,15 +74,28 @@ async fn ws_index(req: HttpRequest, stream: web::Payload) -> Result<HttpResponse
     resp
 }
 
+pub struct LocalAppState {
+    app_name: String
+}
+
+impl LocalAppState {
+    fn new() -> Self {
+        LocalAppState {
+            app_name: "hello".to_string()
+        }
+    }
+}
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
 
     env_logger::init_from_env(env_logger::Env::new().default_filter_or("info"));
 
+    let state = web::Data::new(LocalAppState::new());
 
-    HttpServer::new(|| {
+    HttpServer::new(move || {
         App::new()
+        .app_data(state.clone())
         .wrap(middleware::Logger::default())
         .service(hello)
         .service(analysis)
