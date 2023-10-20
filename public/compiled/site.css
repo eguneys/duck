@@ -33,6 +33,12 @@ body {
   background: #f6f66d;
 }
 
+
+a:hover {
+  color: yellow;
+}
+
+
 navbar {
   padding: 0.4em;
   display: flex;
@@ -76,7 +82,8 @@ navbar dash {
   flex: none;
 }
 
-
-section {
+main {
+  display: flex;
+  flex-flow: column;
   margin: 1em;
 }

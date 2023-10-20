@@ -1,0 +1,14 @@
+{% macro asset_url(url) %}assets/{{url}}{% endmacro js_module %}
+
+
+
+{% macro js_module(module) %}
+  <script type="module" src="{{ self::asset_url(url="compiled/" ~ module ~ ".js") }}"></script>
+{% endmacro js_module %}
+
+
+{% macro js_module_init(module, data) %}
+
+  {{ self::js_module(module=module) }}
+
+{% endmacro js_module_init %}

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block morecss %} 
+<link rel="stylesheet" href="assets/compiled/analysis.css">
+{% endblock morecss %}
+{% block content %}
+{% endblock content %}
+{% block morejs %} {{macros::js_module_init(module="analysis", data=json_data)}} {% endblock morejs %}
