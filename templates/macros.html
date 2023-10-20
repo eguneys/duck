@@ -1,14 +1,30 @@
-{% macro asset_url(url) %}assets/{{url}}{% endmacro js_module %}
+{% macro attr(key, value) %}{{key}}={{value}}{% endmacro attr %}
+
+
+{% macro asset_url(url) %}assets/{{url|safe}}{% endmacro js_module %}
 
 
 
 {% macro js_module(module) %}
-  <script type="module" src="{{ self::asset_url(url="compiled/" ~ module ~ ".js") }}"></script>
+  {% set url = "compiled/" ~ module ~ ".js" %}
+  <script type="module" src="{{ self::asset_url(url=url) }}"></script>
 {% endmacro js_module %}
 
 
 {% macro js_module_init(module, data) %}
 
+  {% set edata = data | json_encode() %}
   {{ self::js_module(module=module) }}
+  {{ self::embed_js_unsafe_load_then(js="duckchess24.loadEsm('" ~ module ~ "', " ~ edata ~ ")") }}
 
 {% endmacro js_module_init %}
+
+
+{% macro embed_js_unsafe_load_then(js) %}
+  {{ self::embed_js_unsafe(js="duckchess24.load.then(() =>" ~ js ~ ")") }}
+{% endmacro embed_js_unsafe_load_then %}
+
+
+{% macro embed_js_unsafe(js) %}
+  <script>{{js | safe}}</script>
+{% endmacro embed_js_unsafe %}

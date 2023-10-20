@@ -6,7 +6,8 @@ export default defineConfig({
     outDir: '../../public/compiled',
     lib: {
       entry: 'src/index.ts',
-      formats: ['es']
+      formats: ['es'],
+      fileName: 'duckchess24'
     }
   }
 })

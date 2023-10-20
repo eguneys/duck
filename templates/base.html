@@ -1,4 +1,8 @@
 {% import "macros.html" as macros %}
+
+{% set dataDev = macros::attr(key="data-dev", value=true) %}
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +14,10 @@
 
     {% block morecss %} {% endblock morecss %}
   </head>
-  <body>
+  <body
+  
+  {{ dataDev }}
+  >
 
     <navbar> 
       <logo>duckchess.org</logo>
@@ -33,7 +40,15 @@
     {% block content %} {% endblock content %}
     </main>
 
+
+
+    {{
+      macros::embed_js_unsafe(js="duckchess24={load:new Promise(r=>document.addEventListener('DOMContentLoaded', r))}")
+    }}
+    {{ macros::js_module(module="duckchess24") }}
     {% block morejs %} {% endblock morejs %}
+
+
 
   </body>
 </html>

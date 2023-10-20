@@ -1,10 +1,12 @@
+use std::collections::HashMap;
+
 use actix::{ StreamHandler, Actor };
 use actix_files::Files;
 use actix_web::{Responder, get, HttpResponse, web, App, HttpServer, middleware, HttpRequest, Error};
 
 use actix_web_actors::ws;
 use lazy_static::lazy_static;
-use tera::{Tera, Context};
+use tera::{Tera, Context, to_value};
 use serde::Serialize;
 
 lazy_static! {
