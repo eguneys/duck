@@ -18,6 +18,7 @@ pub struct Env {
   net: NetConfig
 }
 
+#[derive(Clone)]
 pub struct Templates(Data<LocalAppState>);
 
 impl Templates {

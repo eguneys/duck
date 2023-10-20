@@ -1,4 +1,4 @@
-feednews {
+.feednews {
   border-radius: 8px;
   border: 1px solid black;
   padding: 1em;
@@ -7,18 +7,18 @@ feednews {
   justify-content: space-around;
 }
 
-feed, news {
+.feed, .news {
   flex: 1;
   padding: 0.8em;
   border: solid black 1px;
 }
 
-feed p {
+.feed p {
 
   padding-bottom: 0.8em;
 }
 
-news ul {
+.news ul {
   list-style: none;
   display: flex;
   flex-flow: column;
@@ -53,40 +53,40 @@ footer a {
   border: 1px solid black;
 }
 
-main {
+.lobby-app {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-main .action {
+.lobby-app .action {
   display: flex;
   flex-flow: column;
 }
 
-main .hookoptions {
+.lobby-app .hookoptions {
   border: 1px solid black;
   padding: 0.2em;
 }
 
-main .hooks {
+.lobby-app .hooks {
   display: flex;
   border: 1px solid black;
   max-height: 240px;
 }
 
-main .hooks ul {
+.lobby-app .hooks ul {
   list-style: none;
   padding: 0.1em;
   overflow-y: scroll;
 }
 
-main .hooks ul li {
+.lobby-app .hooks ul li {
   margin: 0.1em;
   box-shadow: inset 0px 0px 2px 0px;
 }
 
-main .hooks ul li:hover {
+.lobby-app .hooks ul li:hover {
   user-select: none;
   cursor: pointer;
   color:black;
@@ -94,19 +94,19 @@ main .hooks ul li:hover {
   box-shadow: 0px 0px 1px 1px;
 }
 
-main .action button {
+.lobby-app .action button {
   font-size: 1.4em;
   padding: 0.2em;
   margin-bottom: 0.2em;
 }
 
-main .options {
+.lobby-app .options {
   padding: 1em;
   display: flex;
   justify-content: space-between;
 }
 
-main .options button {
+.lobby-app .options button {
   padding: 1em;
 }
 

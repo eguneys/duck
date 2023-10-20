@@ -21,7 +21,7 @@ use super::environment::Templates;
 
 
   pub fn css_tag(&self, name: String) -> impl FnOnce(&mut HeadBuilder) -> & mut HeadBuilder + '_  {
-    self.css_at(format!("{name}{}.css", if self.minified_assets() { ".min" } else { "" }))
+    self.css_at(format!("compiled/{name}{}.css", if self.minified_assets() { ".min" } else { "" }))
   }
 
 

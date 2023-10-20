@@ -46,8 +46,8 @@ async fn analysis(views: Views) -> impl Responder {
 }
 
 #[get("/")]
-async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("hello")
+async fn hello(views: Views) -> impl Responder {
+    HttpResponse::Ok().body(views.home.show().to_string())
 }
 
 
