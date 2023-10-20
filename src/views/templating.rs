@@ -47,7 +47,7 @@ use super::environment::Templates;
   
   
   
-  pub fn js_module(&self, name: String, value: String) -> 
+  pub fn js_module(&self, name: String) -> 
   impl FnOnce(&mut BodyBuilder) -> & mut BodyBuilder + '_ {
     move |body| {
   
@@ -57,9 +57,26 @@ use super::environment::Templates;
     }
   }
   
-  pub fn js_module_init(&self, module: String, value: String) -> 
+  pub fn js_module_init(&self, name: String, json: serde_json::Value) -> 
   impl FnOnce(&mut BodyBuilder) -> & mut BodyBuilder + '_ {
-    self.bfrag(vec![
-      self.js_module(module, value) ])
+    move |body| {
+      let body = self.js_module(name.clone())
+      (body);
+      let body = self.embed_js_unsafe_load_then(format!(r#"duckchess24.loadEsm("{name}", {{ init:{} }})"#, json.to_string()))
+      (body);
+      body
+    }
+  }
+
+  pub fn embed_js_unsafe_load_then(&self, js: String) ->
+  impl FnOnce(&mut BodyBuilder) -> & mut BodyBuilder + '_ {
+    self.embed_js_unsafe(format!("duckchess24.load.then(() => {{ {js} }})"))
+  }
+
+  pub fn embed_js_unsafe(&self, js: String) -> 
+  impl FnOnce(&mut BodyBuilder) -> & mut BodyBuilder + '_ {
+    |body| {
+      body.script(|script| script.text(js))
+    }
   }
 }

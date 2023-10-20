@@ -1,11 +1,17 @@
 use html::root::Html;
+use serde_json::to_value;
 
-use super::{environment::Templates, base::layout};
+use super::{environment::Templates, base::HasBase};
 
 pub struct HomeView {
   templ: Templates
 }
 
+impl HasBase for HomeView {
+    fn templ(&self) -> Templates {
+      self.templ.clone()
+    }
+}
 
 impl HomeView {
 
@@ -14,7 +20,11 @@ impl HomeView {
   }
 
   pub fn show(&self) -> Html {
-    layout(|main| {
+
+    let json = to_value("hello").unwrap();
+
+
+    self.layout(|main| {
       main
       .section(|section| {
         section.division(|div| {
@@ -114,7 +124,7 @@ impl HomeView {
     },self.templ.hfrag(vec![
       self.templ.css_tag("lobby".to_string())
     ]), 
-    self.templ.js_module_init("lobby".to_string(), "hello".to_string()))
+    self.templ.js_module_init("lobby".to_string(), json))
   }
 
 }
