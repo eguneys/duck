@@ -68,7 +68,7 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for MyWs {
 }
 
 
-async fn ws_index(req: HttpRequest, stream: web::Payload) -> Result<HttpResponse, Error> {
+async fn ws_analysis(req: HttpRequest, stream: web::Payload) -> Result<HttpResponse, Error> {
     let resp = ws::start(MyWs {}, &req, stream);
     println!("{:?}", resp);
     resp
@@ -100,7 +100,7 @@ async fn main() -> std::io::Result<()> {
         .service(hello)
         .service(analysis)
         .service(Files::new("/assets", "public"))
-        .route("/ws/", web::get().to(ws_index))
+        .route("/ws/analysis", web::get().to(ws_analysis))
         .default_service(web::get().to(default_handler))
     })
     .bind(("0.0.0.0", 8080))?

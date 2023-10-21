@@ -1,0 +1,26 @@
+
+.analysis-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  'area1 area2'
+  'area3 .';
+  gap: 10px;
+}
+
+.analysis-wrap > shess {
+  grid-area: area1;
+}
+
+.analysis-wrap > .under {
+  grid-area: area3;
+}
+
+
+.under .fen-wrap {
+  display: flex;
+}
+
+.under input {
+  width: 100%;
+}
